@@ -1,0 +1,20 @@
+﻿# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Runtime secrets/state
+data/*.session
+data/*.sqlite
+telegram_pipeline/data/*.session
+telegram_pipeline/data/*.sqlite
+
+# Outputs
+outputs/reports/
+outputs/logs/
+outputs/obsidian/
+
+# OS
+.DS_Store
+Thumbs.db

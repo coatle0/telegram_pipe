@@ -1,0 +1,232 @@
+{
+  "title": "Amkor Technology, Inc., Q3 2024 Earnings Call, Oct 28, 2024",
+  "transcript_id": 3291536,
+  "event_id": 1899845813,
+  "company_id": "2589783",
+  "segments": [
+    {
+      "speaker": "Operator",
+      "text": "Good day, ladies and gentlemen, and welcome to the Amkor Technology Third Quarter 2024 Earnings Conference Call. My name is Paul, and I will be your conference facilitator today. [Operator Instructions] As a reminder, this conference is being recorded. \r\nI would now like to turn the call over to Jennifer Jue, Head of Investor Relations. Ms. Jue, please go ahead."
+    },
+    {
+      "speaker": "Jennifer Jue",
+      "text": "Thank you, operator. Good afternoon, everyone, and thank you for joining us for Amkor's Third Quarter 2024 Earnings Conference Call. Joining me today are Giel Rutten, our Chief Executive Officer; and Megan Faust, our Chief Financial Officer. \r\nOur earnings press release was filed with the SEC this afternoon and is available on the Investor Relations page of our website, along with the presentation slides that accompany today's call.\r\nDuring this presentation, we will use non-GAAP financial measures, and you can find the reconciliation to the U.S. GAAP equivalent on our website. We will make forward-looking statements about our expectations for Amkor's future performance based on the environment as we currently see it. Of course, actual results could differ. Please refer to our press release and SEC filings for information on risk factors, uncertainties and exceptions that could cause actual results to differ materially from these expectations. \r\nPlease note that the financial results discussed today are preliminary, and final data will be included in our Form 10-Q. \r\nAnd now I'll turn the call over to Giel."
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Thank you, Jennifer. Good afternoon, everyone, and thank you for joining the call today. Amkor delivered third quarter performance in line with expectations, with revenue of $1.86 billion and EPS of $0.49. Total revenue increased 27% sequentially, mainly driven by demand for advanced SiP technology. In the quarter, we successfully ramped high-volume production for devices supporting the launch of new premium tier smartphones, a new consumer wearable program and several products for AI-enabled ARM-based PCs. \r\nIn support of the continued demand increase for the high-performance computing market, especially for AI processors, we ramped volume by utilizing our incremental 2.5D capacity. Although demand for traditional servers, networking and automotive remained weak, Amkor's year-to-date advanced packaging revenue increased 6% over 2023. The continued weakness in the automotive and industrial and consumer markets significantly impacted our mainstream business, with a year-to-date revenue decline of 24% versus 2023. \r\nThroughout this unique and challenging environment, Amkor has maintained focus on its 3 strategic pillars. Our technology leadership in advanced packaging has enabled us to win programs in AI and high-performance computing, ARM-based PCs and consumer IoT. Our continued investment in a global manufacturing footprint offers customers a resilient and reliable semiconductor manufacturing supply chain. \r\nIn Vietnam, we started production, and our plans to bring Arizona online are progressing well. Our engagements in the secular growth markets are strengthened by strategic partnerships with industry leaders, including what we have announced with TSMC and Infineon. We are confident this strategic direction positions Amkor well to benefit from the secular growth drivers in the semiconductor markets. \r\nNow let me review the current dynamics in each of our end markets. Revenue in the Communications end market increased 36% sequentially, driven by multiple device ramps to support the launch of premium tier iOS phones. Revenue within the Android supply chain was flat sequentially but showed continued year-on-year recovery. \r\nOur strong position in the premium tier phone market is built on our advanced packaging technology. Over the last few years, we have expanded our technology portfolio by investing in RF capabilities to support integration of Bluetooth and WiFi functionality in a broad range of devices. In 2024, we saw returns on those investments in communications and in other areas like wearables and PCs. \r\nRevenue from our automotive and industrial end markets remained stable. Recovery in this market is taking longer than anticipated due to weak end market demand and ongoing inventory corrections. Year-to-date, automotive and industrial revenue was down 17%.\r\nCustomers continue to work through inventory and timing for recovery remains uncertain. Despite these headwinds, NPI activity remains solid. We are qualifying new programs for automotive ADAS processors, utilizing flip chip technologies and for radar and LiDAR applications and wafer-level technology. Our Portugal facility continues to ramp production for automotive sensors and is progressing well with the factory expansion for power modules as previously announced with Infineon. \r\nRevenue from the computing end market increased 6% sequentially and 23% year-on-year. We ran volume for full-flow 2.5D technologies for AI devices in line with plan. The on-substrate flow experienced some constraints in material availability, which limited Q3 revenue growth in this part of the business. \r\nDemand for AI devices remains strong and we still expect that 2024 revenue for 2.5D will quadruple versus 2023. Our traditional server and networking business has been weak, with a year-to-date decline of 33%. However, early signs of recovery with modest improvements in Q4 are noted and we observed new product ramps for multiple customers supporting different areas in the data center, including CPUs, retimers and switches. \r\nRevenue from the Consumer end market increased 70% sequentially, driven by the high-volume production ramp for new wearable IoT device. Volume is expected to remain strong in Q4 before tapering down throughout 2025. Business from traditional consumer applications increased modestly in Q3 for the first time after 4 quarters of sequential decline. And feedback from customers is that a gradual recovery is expected in the next few quarters. \r\nDuring the third quarter, our manufacturing organization continued to manage multiple priorities across our geographically diverse manufacturing footprint. In Korea, we focused on executing the steep advanced SiP RAMs for multiple communications and consumer programs, setting a record advanced SiP revenue in the quarter. \r\nWe are also bringing up another HPC customer for 2.5D technologies, and the manufacturing and R&D team progressed well with qualification of next-generation organic RDL interposer solutions for 2025. Our new Vietnam location started initial production in Q3 with anticipated volume ramps in the fourth quarter. In Portugal, we are expanding our technology portfolio for wafer-level processing, advanced flip chip and test solutions in support of the European automotive supply chain. Additionally, our panel line is being evaluated by multiple customers for next-generation devices.\r\nBesides the manufacturing and R&D priorities, the organization is focused on key strategic projects in the U.S., including progress on chips funding and preparing the technology portfolio for our Arizona factory by signing an MOU with TSMC for advanced packaging technology. \r\nNow let me turn to our fourth quarter outlook by revisiting the assumptions we had for growth in the second half of the year. We expected stronger than seasonal second half growth to be driven by additional 2.5D capacity coming online midyear, a meaningful ramp of a new consumer wearable program, a strong communication cycle and the gradual recoveries within the automotive and industrial markets. However, prolonged weakness in automotive and industrial and a weaker-than-anticipated communication cycle has dampened our second half outlook. With this backdrop, we are expecting a more than seasonal decline in the fourth quarter, with revenue of $1.65 billion at the midpoint of guidance. This decline is primarily driven by dynamics within our Communications end market, specifically by a phone build plan that deviates from historical trends. \r\nFor full year 2024, we anticipate Communications will decline single digits and automotive and industrial will decline double digits, offset by growth in Computing and Consumer. Despite the short-term dynamics within our Communications business, we remain confident in our long-term growth prospects, supported by our leading technology portfolio, global manufacturing footprint and strategic partnerships. \r\nWith that, I will now turn the call over to Megan to provide more detailed financial information."
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "Thank you, Giel, and good afternoon, everyone. Amkor delivered an outstanding third quarter with revenue of $1.86 billion, a 27% sequential increase, driven by a quarterly record of advanced SiP revenue supporting Communications and Consumer end markets. Third quarter gross profit was $272 million and gross margin was 14.6%. Gross margin was constrained due to higher than seasonal material content, driven by a product mix concentrated in advanced SiP. \r\nOperating expenses for the quarter came in as expected at $123 million. Operating income increased sequentially over 80% in Q3 to $149 million, and operating income margin was 8%. Net income for the third quarter was $123 million, resulting in EPS of $0.49. Third quarter EBITDA was $309 million, and EBITDA margin was 16.6%.\r\nWe continue to maintain a strong balance sheet. We ended the quarter with $1.5 billion of cash and short-term investments and total liquidity of $2.2 billion. Our total debt as of the end of the quarter is $1.1 billion, and our debt-to-EBITDA ratio is 1x. Leveraging our financial stability, we strategically invested in expanding our geographic footprint to support future growth by constructing our new Vietnam facility. We commenced production in Q3 and are pleased with the progress. \r\nRegarding our fourth quarter outlook, we anticipate revenue of approximately $1.65 billion, representing an 11% sequential decline. The more than seasonal decline is mainly due to a premium tier smartphone build plan that surpassed expectations in the first half and was less than projected in the second half. As we consider the dynamics for the full year 2024, the overall semiconductor market recovery has been uneven across the various end markets. Still, considering the Q4 guide, our second half of 2024 is expected to be up 24% over the first half. While this is softer than our original expectations, it represents a solid second half, underpinned by the successful ramp of a high-volume consumer wearable product, qualifying incremental 2.5D capacity and scaling it to high volume, and a seasonal ramp of multiple products supporting the launch of new premium tier smartphones. \r\nWe expect Q4 gross margin to be flat to Q3. Gross margins continue to be impacted by underutilization in our mainstream factories as well as burden associated with our new Vietnam facility as it starts to build scale. We expect Q4 operating expenses of around $120 million. We expect our full year effective tax rate to be around 18%, excluding discrete tax items. \r\nFourth quarter net income is expected to be between $70 million [ and $110 million, resulting in EPS of $0.28 to $0.44. We are holding our CapEx forecast for the year at $750 million. 2/3 of our CapEx is focused on expanding capacity for technologies such as 2.5D and advanced SiP. And the remainder is focused on expanding select manufacturing facilities ]. In this challenging environment, we remain dedicated to executing our 3 strategic pillars: advancing our technology portfolio and high-performance computing supporting AI and ARM-based PCs, further expanding our broad geographic footprint by successfully beginning production in Vietnam and progressing our plans to build a U.S. manufacturing location, supported by chips funding and strengthening our relationships with industry leaders in secular growth markets. \r\nWith that, we will now open the call up for your questions. Operator?"
+    },
+    {
+      "speaker": "Operator",
+      "text": "[Operator Instructions] Our first question is from Steven Fox with Fox Advisors."
+    },
+    {
+      "speaker": "Steven Fox",
+      "text": "I was wondering if you could talk a little bit more about how we think about capacity additions, if you've changed any plans given the sort of the slower demand in some of your core markets into next year, or whether we should consider anything different, like how underutilization charges progress from this level into like the first part of next year. And then I had a follow-up."
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Steve, this is Giel. Let me give a bit of color on the capacity expansion. I mean as Megan already mentioned earlier, most of our investments in capacity expansion were in the computing domain, specifically 2.5D capacity expansion that came online in the second quarter this year, and we're currently fully utilizing that to further ramp up with main customers. We expect that to be fully utilized going forward, including into 2025, where we actually plan to further invest and expand that capacity. \r\nThe second capacity domain where we invested in '24 was advanced SiP, specifically to enable the ramp of the wearable consumer device. Also, that will continue into 2025 and we're running currently at a high utilization of that capacity. I think these are the most prominent investments that we've made in capacity expansion, Steve."
+    },
+    {
+      "speaker": "Steven Fox",
+      "text": "That's helpful. And then on the underutilization charges going forward?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Well, I mean we don't refer to underutilization charges. But if you take the factories that were underutilized, these were the factories that are manufacturing the automotive and industrial products mostly, and that also referred to our earlier remarks in our mainstream business. And this is in the Philippines where we underutilized, currently running at roughly 60% utilization, some of that in Japan and a slight underutilization of our automotive lines in Korea. But overall, we expect that these lines will gradually fill up during 2025 if the automotive and industrial market slowly starts to recover."
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "And Steve, this is Megan. Just to add to that, with the Vietnam factory coming online this quarter, there is some dilution effect given that's just starting. And so within the quarter, that was probably around 50 basis points. That was included in our guide. And then moving into Q4, where we'll have a full quarter of, I would say, burden transitioning to COGS, that will be around 100 basis points. We expect that will taper off in 2025 as we build scale in Vietnam, such that exiting 2025, we would be more at a breakeven."
+    },
+    {
+      "speaker": "Steven Fox",
+      "text": "Great. That's helpful. And then some of the comments led into my follow-up, which was specifically on auto. Depending on the company and the supply chain we talk to, it seems like there's different impacts from what's going on in the auto supply chain. Is there any way you can narrow down what you're seeing relative to what you saw 90 days ago that maybe is on the disappointing side?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "With respect to the auto market, we believe it's stabilizing. We had foreseen a slight improvement, a better improvement in the course of this year. Getting feedback from our customers, they also see a slightly prolonged recovery, but we see a modest growth in the fourth quarter with some further gradual growth into 2025. The main reasons are still inventory depletion that takes longer than expected, but also end market demand is weaker than expected, specifically also in the EV part of this market."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Steve Barger with KeyBanc Capital Markets."
+    },
+    {
+      "speaker": "Steve Barger",
+      "text": "For the uncertainty on the premium tier smartphone build plan, how's your visibility into early 2025 relative to what you would normally see at the end of October? Or can you give us any commentary on what mobile progression could look like next year?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Steve, let me give a few comments here. I mean with respect to 2025, the visibility currently is limited. What we saw in 2024 is seasonality of our bills for this market that deviated from normal seasonality with a stronger first half and a weaker second half. We also saw a slight changeover -- anticipated changeover that impacted our fourth quarter, but we expect that to recover in 2025. So overall, difficult to say. I mean I can only repeat what there's -- what the information that's out there that we believe that there is a stronger, let's say, cycle next year, driven by AI functionality in the premium tier phones to be launched and that would trigger an up cycle in phones. They were expected to start earlier, but currently, that's expected to happen in 2025."
+    },
+    {
+      "speaker": "Steve Barger",
+      "text": "I appreciate that commentary. And for the $100 million range between the high end and the low end of the 4Q revenue guide, is the phone build plan the primary swing factor you built into that forecast? Or is there something else that is hard to nail down at this point?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Yes. I think if we take the build plan and the seasonality in this versus the normal seasonality. Specifically, we had a strong second quarter and a weaker fourth quarter. There is a slight additional effect. I think that seasonality is explaining about 75% of the total weakness in the fourth quarter. An additional 25% of that weakness is due to a device changeover that we see in the fourth quarter, mainly in the fourth quarter, but we expect to recover that in the next-generation models in the second half of 2025."
+    },
+    {
+      "speaker": "Steve Barger",
+      "text": "That's great. So it sounds like communication is the only one that you can expect to be down sequentially for 4Q?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Yes, correct. I think we expect if we take a little bit more color on the fourth quarter, we expect auto and industrial to stabilize slightly up, Computing to continue to be up, and a slight correction down for Consumer, that's on the current ramp of the IoT wearable devices. But that's a relatively small correction seasonally. The main correction is in Communications."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from [ Peter Pang ] with JPMorgan."
+    },
+    {
+      "speaker": "Unknown Analyst",
+      "text": "As we kind of look into the first half of next year, how would you categorize your business versus seasonal trends? It sounds like the Communications could continue to be tracking below, and then the Consumer, it sounds like you might be ramping up. If that's so, like how would we think about your business going into the first half of next year?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Well, I cannot be -- quantitatively analyze that first half next year. But in general terms, we believe that in the first half next year, in the Communications side, we see some headwinds in the iOS ecosystem. On the other hand, we expect Android to gradually continue to recover. There may be some tailwinds also if the spring launch and the upward correction due to AI functionality in the phone really materialize. \r\nAuto and industrial, we expect continued gradual recovery with potential acceleration. Feedback from customers is that they see that inventory is starting to balance out and maybe some of the end customers overshooting a little bit the minimum value of inventory, but that's a bit speculation still. \r\nComputing, we expect continued growth for 2.5D for AI processors and generally data centers. Also, the share ARM-based PCs, we expect continued growth. And then on the more mature computing applications, we gradually see a recovery there. So also Computing, we foresee a strong start of the year. And Consumer, it will be a progressing build of the current devices with the gradual improvement of more mature consumer devices. So all in all, we believe that the first half looks promising."
+    },
+    {
+      "speaker": "Unknown Analyst",
+      "text": "Got it. And then moving more towards the AI. So AI, I think accelerated makes sense, rapidly rising, right? I mean we think that it could probably be close to half of the overall market [indiscernible] sometime in the next 1 or 2 years. Can you just talk about your engagement with some of these other hyperscalers and how you think about customer diversification?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Yes, that's a good point. I mean we believe the market will continue to grow, although there will be some ups and downs. I mean investments from the hyperscalers diversifies a bit. But overall, we believe that there is a strong uptick and a strong growth, continued growth in that market. If we take customer diversification, we're currently onboarding another customer for standard 2.5D technologies, and that will ramp up in the fourth quarter and going into next year. We're also qualifying several customers on next-generation RDL-based technologies, and that will also ramp towards the second half of 2025. So we are diversifying our customer portfolio but also our technology portfolio in 2025 in a market that we believe will continue to grow going forward."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Craig Ellis with B. Riley Securities."
+    },
+    {
+      "speaker": "Craig Ellis",
+      "text": "Giel and Megan, I wanted to start just by going a little bit further into the question that Peter asked on dynamics in the first half. Megan, how do we think about gross margins as we go into the first half? The auto and industrial business would continue to increase. And if we have strength in parts of the compute business like traditional server applications, but if Communications has more of a downward bias just given seasonality in the iOS ecosystem, does that put upward pressure on gross margin? Or are there other things going on we should be aware of?"
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "Craig, yes, with respect to go-forward expectations in 2025, I mean we've been basically under a pretty impacted underutilization in 2024. So the 2 markets that you mentioned, automotive and industrial, actually, I'll add to that, the traditional server and the traditional consumer, we expect those will gradually increase in 2025, which should bring margin expansion related to those markets. We also see continued growth in compute, specifically around what Giel just mentioned in our 2.5D. That business is running higher than corporate average gross margin. So we see tailwinds associated with that as well."
+    },
+    {
+      "speaker": "Craig Ellis",
+      "text": "That's helpful. And then maybe a longer-term question for Giel, and it's more on calendar '25. Not looking for guidance here, Giel, but as we think about 2024, we had numerous real meaningful programs. We had ARM-based PCs. We had a real nice wearables program that has legs into next year and then we had 2.5D AI. As you think about 2025, what are some of the things you're starting to see or maybe have closed in the funnel that would offer similar types of benefit to help grow the business and expand your same."
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Well, Greg, let me try to give a bit of color there. I mean fundamentally, we don't see a change for 2025. If we look through the business segments, yes, we have, let's say, a temporary headwind in iOS in communication, although we believe that the health of our position in that market is still there. We had a, let's say, a record SiP year. And we also believe that there will be an up cycle in communication with AI edge devices taking off. It may be a little bit longer. It's difficult to predict what the timing is, but we believe it will come and will drive upside volumes. \r\nOther things that we have in the pipeline is in the automotive and industrial markets. You may have seen the announcement we made with Infineon on power modules for -- specifically for electrical vehicles. Once that market takes off, that's an accelerator that we anticipate to come. There is a slight weakness now in the EV market, but in the course of 2025 and certainly in 2026, we expect that to take off. \r\nComputing continues to be strong. I think we have a good position there. We're diversifying. As Megan said, I think we see there is an above average company profitability for that business. So that's good.\r\nConsumer, we expect a gradual, let's say, a moderation of the IoT wearable market. On the other hand, that will be compensated with some of the traditional consumer business recovery. So overall, let's say that gives you a bit color on the different market segments."
+    },
+    {
+      "speaker": "Craig Ellis",
+      "text": "That's very helpful. And if I could sneak in one more. Could you help us just with milestones as we think about the further ramp next year in Vietnam. As we go through 2025, what are some key signposts we should look for? And then how should we look at the progress you would expect to make ramping up Arizona next year?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Yes. With respect to Vietnam, a few data points there. I mean we're ramping up our SiP portfolio in the fourth quarter this year. The lines are qualified. And the second product portfolio that we're ramping there is memory, specifically NAND flash memory. That's also qualified. So we start a gradual ramp in that facility for these 2 products. For 2.5D, we qualified our installed base. We're ramping that up now, and we expect additional capacity to come onstream the end of Q2 2025."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Randy Abrams with UBS."
+    },
+    {
+      "speaker": "Randy Abrams",
+      "text": "I wanted to ask the first question, 2 separate things. First on the Arizona, the new additional expansion, could you go through just the additional technologies you're taking on or the additional relationship you have with TSMC to ramp up? And any change in your expectations for the Arizona project? And then the second question is on the test business. How do you see the opportunity for AI GPUs if you have that process chain to do the final test, the burn in the system level test to do some of those for final test?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Okay, Randy. Let's start with Arizona and U.S. manufacturing. First of all, the MOU that we signed with TSMC, it's intended to offer our mutual customers a seamless manufacturing supply chain and a technology offering between Asia and the U.S. by standardizing on advanced packaging technologies in the U.S. versus Asia that offers these joint customers a seamless transition for dual qualification of specific devices. And that will happen in our Peoria factory. It will be for the compute segment, but also for the Communications segment technologies. \r\nNow we have to remember that our Peoria factory, our Arizona factory is not captive to TSMC, but we will run TSMC technology in that factory specifically for joint customers. And on top of that for other customers, Amkor will install Amkor advanced packaging technology. \r\nNow with respect to the test business, we see for test, specifically for AI devices, currently a high concentration of test in Taiwan. We believe that the industry is ready and looking for alternatives to derisk that supply chain. So we're definitely interested and actively pursuing to invest in test in general, but also specifically in that segment of test."
+    },
+    {
+      "speaker": "Randy Abrams",
+      "text": "Okay. And maybe a quick follow-up. I guess just in your pursuit, does it look like potential or it's still a bit further out? Just curious how close it is to the engagements. And then the second question was more broadly, I think you commented the investment in CapEx for now on track, if you could give a view into '25 on either a capital intensity basis or how you see absolute dollars? And I'm curious if any panel-level packaging, how soon you see the development converting to handle some of the larger dies or more advanced projects on panel level?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Okay. Let me try to answer the additional question on test and then Megan can cover the capital investment question. On test, the timing is difficult to predict here, Randy. As a starting point, my view is that all wafers that are being manufactured ultimately in the U.S. will be assembled and tested in the U.S. and not being shipped around the world for test. That's the starting point. So I mean to find the right timing for diversifying the current existing test supply chain, I think that's to be seen. But over the next few years, I expect some changes."
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "And Randy, just to give a little color on capital investments for 2025, while we're not guiding '25 at this time, we have started to make plans. We do intend to have incremental investments in 2.5D, as we mentioned, that should be coming online midyear. You mentioned panel. That is a program that we have had in development for some time, and we would continue to invest in that. Specifically in our Portugal factory, we have been evaluating with several customers opportunities to bring those to large volume on that line. So I would say that we would expect our capital intensity to remain in the low teens moving into 2025."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Tom Diffely with D.A. Davidson."
+    },
+    {
+      "speaker": "Thomas Diffely",
+      "text": "I was curious, what do you think drove the sooner ramp, I believe, the ramp of the iOS phone last year a quarter before normal?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Well, Tom, I mean what you're currently seeing is that, yes, we had a very good second quarter in the Communications segment and we anticipated a normal seasonality throughout the second half of this year. That turned out to be slightly different. The seasonality turns out to be different with the first half stronger than expected, especially Q2, and the second half weaker than expected, especially Q4. And this holds both for the iOS ecosystem as well as the Android ecosystem. So it's not holding for one of the two. I think both have, let's say, a deviating seasonality. I can only speculate, Tom, what it will be, but my speculation is as good as anybody. So we don't have a distinct explanation for this."
+    },
+    {
+      "speaker": "Thomas Diffely",
+      "text": "Okay. And then you also mentioned there was a substrate issue during the quarter. Maybe a little more color on that?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "The substrate issue, well, what I mentioned is -- I mentioned 2 things that happened in the quarter. One is in the communication market, let's start with that. The change in seasonality is underpinning about 75% of our Q4 deviation. The second dynamics that we see in the second half of the year is an anticipated device changeover where the end customer changes from one device generation to another. And that means that we see a moderate impact there, good for about 25%, but we are confident that we are back in the next-generation models in second half of 2025."
+    },
+    {
+      "speaker": "Thomas Diffely",
+      "text": "Okay. And then maybe as a follow-up, Megan, when you look at the Vietnam facility ramping up, the burden associated with that, is that going to be a step function? Or is that going to slowly ramp over time?"
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "Yes, Tom. So in Q3, that impacted our gross margin about 60 basis points as you would compare it to Q2, but that was included in our guide for Q3. That will step up in Q4 to about 100 basis points, but that would be, I would say, the full onboarding costs moving in to COGS at that time. So during 2025, as we scale, I would expect that dilution factor to start to taper off."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Ross Cole with Needham & Company."
+    },
+    {
+      "speaker": "Ross Cole",
+      "text": "So I was wondering if you can provide any additional quantitative color on the planned incremental investment in 2.5D capacity?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "I'll leave that to Megan."
+    },
+    {
+      "speaker": "Megan Faust",
+      "text": "Ross, yes, so we have shared that we're going to expand our capacity in 2025. We have not tried to quantify that given the multitude of different business models that are currently projected. You can consider that we had shared that we tripled our capacity in 2023 -- excuse me, 2024 as it compares to 2023. That is allowing us to quadruple our revenue. The capacity expansion in 2025 is sizable, but it would be somewhere in the vicinity of what we were able to do in 2024."
+    },
+    {
+      "speaker": "Thomas Diffely",
+      "text": "Great. And then as a follow-up question, slightly unrelated. I remember, I think it was last quarter you had mentioned a bit of an HBM shortage which was causing a slight delay in the timing of the ramp. And you had expected that to pick up and normalize, I believe, in August. And did you see this happen and what are your expectations relative to your initial thoughts there? Is it going higher or lower?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Yes, a few comments there. I mean we had indeed a slight impact last quarter. We reported that with respect to the ramp of our full-flow 2.5D where most of our capacity expansion in 2024 was, we didn't see any impact on high bandwidth memory constraints. So we were able to fully utilize that expansion. \r\nOn the, let's say, on the substrate part where we also have -- and that's a different business model, we are also running that. And in that specific part of the business, we saw some short supplies of high bandwidth memory in the third quarter. And that was specifically related to the transition of high bandwidth memory 3 to 3E. And that's in the 3E version, there were some constraints that had a, although not a big, but it had an impact in our Q3 ramp."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Our next question is from Joe Moore with Morgan Stanley."
+    },
+    {
+      "speaker": "Joseph Moore",
+      "text": "I wonder if you could talk about, you mentioned kind of a stabilization in automotive and industrial. What's your visibility there? And your customers are seeing sort of mix trends, but they have pretty high balance sheet inventory and distribution inventory as well. So just what's your visibility into that business going forward?"
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Well, the visibility is what we hear from our customers, Joe, last quarter. I think you may have heard it from the, let's say, the major semiconductor companies supplying in that automotive supply chain called the second quarter going into the third quarter as the trough of their inventory impact, and they were reporting a more balanced inventory. \r\nNow it turns out that it's stretched into the third quarter. There are still some moderate impact on inventory correction, but there's also the end market demand in the automotive market is slower than expected. So although they called it a trough in the second quarter this year, it's still extending into the third quarter, but we believe that inventory is getting more stable end market recovery. You hear different feedback. But we believe the -- specifically the EV market in early part of 2025 will start to pick up. So overall, it's a good starting point for a recovery in 2025."
+    },
+    {
+      "speaker": "Operator",
+      "text": "At this time, there are no further questions. I would like to turn the call back over to Giel for any closing remarks."
+    },
+    {
+      "speaker": "Giel Rutten",
+      "text": "Thank you. Amkor delivered third quarter revenue of $1.86 billion, reflecting an increase of 27% sequentially. During the quarter, we achieved record advanced SiP revenue and ramped volume for full-flow 2.5D technology supporting AI devices. For the fourth quarter, we expect revenue of $1.65 billion, a more than seasonal decline driven by dynamics in the Communications end market. Despite these short-term dynamics, we remain confident in our long-term growth prospects, supported by our leading technology portfolio, global manufacturing footprint and strategic partnerships. \r\nThank you for joining the call today."
+    },
+    {
+      "speaker": "Operator",
+      "text": "Ladies and gentlemen, this concludes today's conference call. You may now disconnect."
+    }
+  ]
+}

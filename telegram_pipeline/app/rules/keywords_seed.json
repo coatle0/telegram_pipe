@@ -1,0 +1,67 @@
+[
+    {
+        "keyword": "실적",
+        "category": "Event",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "가이던스",
+        "category": "Event",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "수주",
+        "category": "Event",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "AI",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "데이터센터",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "금리",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "환율",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "OCS",
+        "category": "ValueChain",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "EML",
+        "category": "ValueChain",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "InP",
+        "category": "ValueChain",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "트랜시버",
+        "category": "ValueChain",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "transceiver",
+        "category": "ValueChain",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "HBM",
+        "category": "Theme",
+        "match_type": "EXACT"
+    }
+]

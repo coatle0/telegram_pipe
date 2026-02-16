@@ -1,0 +1,8 @@
+telegram:
+  progress_every: 20
+  enabled: true
+  session_path: C:/autoai/telegram_pipe/data/telethon.session
+  channels:
+  - '@maddingStock'
+  - '@quantum_ALGO'
+  - '@HANAchina'

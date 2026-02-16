@@ -1,0 +1,2 @@
+{"type": "DOC", "scope": "sector_rank", "summary": "Static analysis and minimal patch plan for sector_rank and Google Sheet integration finalized", "risk": "low", "files": ["docs/trea_reports/20260109__sector_rank_gs_integration.md"]}
+{"type": "DOC_UPDATE", "scope": "sector_rank", "summary": "Updated design decision: Sector reordering logic moved to update_kidx.R based on user feedback", "risk": "low", "files": ["docs/trea_reports/20260109__sector_rank_gs_integration.md"]}
