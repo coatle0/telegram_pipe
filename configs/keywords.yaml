@@ -1,0 +1,73 @@
+oci:
+  - OCI
+  - 폴리실리콘
+  - 비중국산
+  - UFLPA
+  - TerraSus
+  - NeoSilicon
+  - Wacker
+  - 태양광 관세
+  - Section 232
+
+g2power:
+  - 지투파워
+  - 수배전반
+  - 배전반
+  - 관급
+  - 조달청
+  - NEP 인증
+  - 원전 배전반
+
+macro_energy:
+  - 유가
+  - WTI
+  - 이란
+  - 호르무즈
+  - LNG
+  - 전력망
+  - ESS
+  - 재생에너지
+
+macro_semicon:
+  - HBM
+  - DRAM
+  - NAND
+  - 폴리실리콘
+  - AI 칩
+  - 반도체
+
+defense:
+  - 방산
+  - 한화에어로
+  - 현대로템
+  - LIG
+  - 천궁
+  - K방산
+  - 조선
+  - 무기수출
+
+bio:
+  - ADC
+  - 임상
+  - FDA
+  - AACR
+  - 바이오
+  - 항암
+  - CAR-T
+  - 신약
+
+china:
+  - 중국
+  - 차이나
+  - 상하이
+  - PBOC
+  - 위안화
+  - 중국증시
+
+ai_tech:
+  - 엔비디아
+  - NVDA
+  - 데이터센터
+  - LLM
+  - GPU
+  - AI칩
