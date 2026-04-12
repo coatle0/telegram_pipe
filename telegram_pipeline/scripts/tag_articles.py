@@ -26,11 +26,18 @@ import argparse
 import os
 import re
 import sqlite3
+import sys
 from pathlib import Path
 
 import yaml
 
-DEFAULT_DB = "data/risk_commander.sqlite"
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from app.db import DB_PATH
+
+DEFAULT_DB = str(DB_PATH)
 DEFAULT_KEYWORDS = "configs/keywords.yaml"
 DEFAULT_CONFIG = "configs/config.yaml"
 DEFAULT_SESSION = "data/telethon.session"

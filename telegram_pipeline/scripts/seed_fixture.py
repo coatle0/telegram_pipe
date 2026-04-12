@@ -1,7 +1,14 @@
-﻿import os, json, hashlib, sqlite3
+import os, json, hashlib, sqlite3, sys
 from datetime import datetime, timezone
+from pathlib import Path
 
-DB="data/risk_commander.sqlite"
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from app.db import DB_PATH
+
+DB = str(DB_PATH)
 
 def sha256(s:str)->str:
     return hashlib.sha256(s.encode("utf-8")).hexdigest()

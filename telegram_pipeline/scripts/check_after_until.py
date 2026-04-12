@@ -1,6 +1,14 @@
-﻿import sqlite3
+import sqlite3
+import sys
+from pathlib import Path
 
-DB = r"data/risk_commander.sqlite"
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+from app.db import DB_PATH
+
+DB = str(DB_PATH)
 UNTIL = "2026-02-14 00:00:00"
 
 c = sqlite3.connect(DB)

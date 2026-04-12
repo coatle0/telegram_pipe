@@ -21,7 +21,13 @@ import sqlite3
 import sys
 from pathlib import Path
 
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
 from openai import AsyncOpenAI
+
+from app.db import DB_PATH
 
 # Python 3.9~3.14 호환: Windows Proactor 종료 잡음 회피 + Runner API 감지
 if sys.platform == "win32":
@@ -70,7 +76,7 @@ TEMPERATURE = 0.2
 MAX_TOKENS = 900
 BATCH_SIZE = 10   # articles per batch
 CONCURRENCY = 5   # parallel API calls within a batch
-DEFAULT_DB = "data/risk_commander.sqlite"
+DEFAULT_DB = str(DB_PATH)
 
 VALID_SIGNALS = {"bullish", "bearish", "neutral", "mixed"}
 FRAME_KEYS = {"momentum", "theme", "bookie"}

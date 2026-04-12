@@ -2,7 +2,7 @@ import os
 import sqlite3
 import pytest
 from datetime import datetime
-from app.db import init_db, get_connection
+from app.db import init_db, get_connection, DB_PATH
 from app.ingest import ingest_message
 from app.process import process_messages
 from app.extract import run_extract
@@ -13,8 +13,8 @@ os.environ["ALLOW_WRITE"] = "1"
 
 def test_pipeline_smoke():
     # 1. Init DB
-    if os.path.exists("data/risk_commander.sqlite"):
-        os.remove("data/risk_commander.sqlite")
+    if DB_PATH.exists():
+        DB_PATH.unlink()
     init_db()
     
     # 2. Ingest Sample Messages
