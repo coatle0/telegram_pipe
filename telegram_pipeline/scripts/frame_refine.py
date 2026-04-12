@@ -18,9 +18,52 @@ import asyncio
 import json
 import os
 import sqlite3
+import sys
 from pathlib import Path
 
 from openai import AsyncOpenAI
+
+# Python 3.9~3.14 호환: Windows Proactor 종료 잡음 회피 + Runner API 감지
+if sys.platform == "win32":
+    try:
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    except AttributeError:
+        pass
+
+
+def _run_async(coro):
+    """Python 3.9~3.14 모두 호환되는 asyncio 실행 래퍼.
+
+    - 3.11+: asyncio.Runner (3.14의 엄격한 CancelledError 전파/리소스 정리 호환)
+    - 3.9/3.10: 수동 이벤트 루프 + 잔여 태스크 취소 정리
+    - CancelledError가 최상위로 새어나오면 빈 결과 반환
+    """
+    if hasattr(asyncio, "Runner"):
+        try:
+            with asyncio.Runner() as runner:
+                return runner.run(coro)
+        except asyncio.CancelledError:
+            return []
+
+    loop = asyncio.new_event_loop()
+    try:
+        return loop.run_until_complete(coro)
+    except asyncio.CancelledError:
+        return []
+    finally:
+        try:
+            pending = [t for t in asyncio.all_tasks(loop) if not t.done()]
+            for task in pending:
+                task.cancel()
+            if pending:
+                loop.run_until_complete(
+                    asyncio.gather(*pending, return_exceptions=True)
+                )
+            loop.run_until_complete(loop.shutdown_asyncgens())
+        except Exception:
+            pass
+        finally:
+            loop.close()
 
 MODEL = "gpt-4o-mini"
 TEMPERATURE = 0.2
@@ -199,6 +242,9 @@ async def call_llm(client: AsyncOpenAI, sem: asyncio.Semaphore, article: dict) -
                     "bookie": data["bookie"],
                 },
             }
+        except asyncio.CancelledError:
+            # 3.14에서는 CancelledError를 반드시 재전파해야 정상 취소됨
+            raise
         except Exception as e:
             print(f"  SKIP {mid}: {e}")
             return None
@@ -219,9 +265,16 @@ async def run(articles: list[dict]) -> list[dict]:
         print(f"  Batch {batch_num}: articles {i + 1}-{i + len(batch)}")
 
         batch_results = await asyncio.gather(
-            *[call_llm(client, sem, a) for a in batch]
+            *[call_llm(client, sem, a) for a in batch],
+            return_exceptions=True,
         )
-        results.extend([r for r in batch_results if r is not None])
+        for r in batch_results:
+            if isinstance(r, BaseException):
+                # CancelledError 포함 예외는 로그만 남기고 스킵
+                print(f"  SKIP batch item: {type(r).__name__}: {r}")
+                continue
+            if r is not None:
+                results.append(r)
 
     return results
 
@@ -251,7 +304,7 @@ def main():
     print(f"Found {len(articles)} articles (day={args.day}, groups={groups or 'all'})")
     print(f"Model: {MODEL} | 1 call/article | concurrency={CONCURRENCY}")
 
-    results = asyncio.run(run(articles))
+    results = _run_async(run(articles))
 
     out_path = Path(args.out) if args.out else Path(f"data/frame_scores_{args.day}.json")
     out_path.parent.mkdir(parents=True, exist_ok=True)
