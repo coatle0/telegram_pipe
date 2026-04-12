@@ -3,7 +3,7 @@ import sqlite3
 from pathlib import Path
 from typing import Optional
 
-DB_PATH = Path("data/risk_commander.sqlite")
+DB_PATH = Path(__file__).resolve().parent.parent / "data" / "risk_commander.sqlite"
 
 def check_write_permission():
     """Enforce kill-switch for DB writes."""
