@@ -38,13 +38,23 @@ def process_messages(since=None, until=None):
     
     # Select unprocessed messages
     # In v0.1, we can just select all that aren't in processed_messages
-    cursor.execute("""
-        SELECT r.id, r.raw_text, r.duplicate_of 
+    query = """
+        SELECT r.id, r.raw_text, r.duplicate_of
         FROM raw_messages r
         LEFT JOIN processed_messages p ON r.id = p.raw_id
         WHERE p.raw_id IS NULL
-    """)
-    
+    """
+    params = []
+
+    if since is not None:
+        query += " AND r.message_date >= ?"
+        params.append(since)
+    if until is not None:
+        query += " AND r.message_date < ?"
+        params.append(until)
+
+    cursor.execute(query, params)
+
     rows = cursor.fetchall()
     count = 0
     

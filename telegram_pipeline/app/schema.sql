@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS raw_messages (
 );
 
 CREATE INDEX IF NOT EXISTS idx_raw_content_hash ON raw_messages(content_hash);
-CREATE INDEX IF NOT EXISTS idx_raw_msg_unique ON raw_messages(channel_id, message_id);
+CREATE UNIQUE INDEX IF NOT EXISTS idx_raw_msg_unique ON raw_messages(channel_id, message_id);
 
 -- Immutable Triggers
 CREATE TRIGGER IF NOT EXISTS prevent_raw_update
@@ -91,4 +91,34 @@ CREATE TABLE IF NOT EXISTS defects (
     description TEXT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY(raw_id) REFERENCES raw_messages(id)
+);
+
+CREATE TABLE IF NOT EXISTS article_tags (
+    id           INTEGER PRIMARY KEY AUTOINCREMENT,
+    message_id   TEXT NOT NULL,
+    channel_id   TEXT NOT NULL,
+    tag_group    TEXT NOT NULL,
+    keyword      TEXT NOT NULL,
+    message_date TEXT,
+    raw_text     TEXT,
+    UNIQUE(message_id, channel_id, keyword)
+);
+
+CREATE INDEX IF NOT EXISTS idx_article_tags_group ON article_tags(tag_group);
+CREATE INDEX IF NOT EXISTS idx_article_tags_date ON article_tags(message_date);
+
+CREATE TABLE IF NOT EXISTS llm_refined_news (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    message_id TEXT NOT NULL UNIQUE,
+    relevance_score REAL NOT NULL,
+    sentiment TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    summary TEXT NOT NULL,
+    tickers TEXT NOT NULL,
+    entities TEXT NOT NULL,
+    bull_points TEXT NOT NULL,
+    bear_points TEXT NOT NULL,
+    noise_flags TEXT NOT NULL,
+    confidence REAL NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
 );

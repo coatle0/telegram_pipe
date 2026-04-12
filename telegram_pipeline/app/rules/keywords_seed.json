@@ -63,5 +63,80 @@
         "keyword": "HBM",
         "category": "Theme",
         "match_type": "EXACT"
+    },
+    {
+        "keyword": "NAND",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "낸드",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "DRAM",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "메모리",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "반도체",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "LNG",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "유가",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "CPI",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "PPI",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "KOSPI",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "스태그플레이션",
+        "category": "Macro",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "ETF",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "CSP",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "IDM",
+        "category": "Theme",
+        "match_type": "EXACT"
+    },
+    {
+        "keyword": "지정학",
+        "category": "Macro",
+        "match_type": "EXACT"
     }
 ]

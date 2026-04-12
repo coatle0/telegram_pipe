@@ -173,24 +173,36 @@ def run_extract(since=None, until=None):
     check_write_permission()
     conn = get_connection()
     cursor = conn.cursor()
-    
-    # Get processed messages that haven't been extracted yet
-    # For v0.1, we can do a LEFT JOIN exclusion or just wipe/reprocess if 'reprocess' command
-    # Here we assume incremental: select IDs not in extracted_entities (naive)
-    # A better way is to track 'extracted_at' in processed_messages or separate tracking table.
-    # For now, we'll iterate all processed messages and INSERT (duplicates allowed in table schema? No, we should avoid duplicates)
-    
-    cursor.execute("SELECT raw_id, cleaned_text FROM processed_messages")
+
+    query = """
+        SELECT p.raw_id, p.cleaned_text
+        FROM processed_messages p
+        JOIN raw_messages r ON r.id = p.raw_id
+    """
+    params = []
+    conditions = []
+
+    if since is not None:
+        conditions.append("r.message_date >= ?")
+        params.append(since)
+    if until is not None:
+        conditions.append("r.message_date < ?")
+        params.append(until)
+
+    if conditions:
+        query += " WHERE " + " AND ".join(conditions)
+
+    cursor.execute(query, params)
     rows = cursor.fetchall()
     
     for row in rows:
         raw_id = row['raw_id']
         text = row['cleaned_text']
-        
-        # Check if already extracted
-        cursor.execute("SELECT 1 FROM extracted_entities WHERE raw_id = ?", (raw_id,))
-        if cursor.fetchone():
-            continue
+
+        # Recompute extraction idempotently for the selected scope to avoid
+        # duplicates or partial state from interrupted runs.
+        cursor.execute("DELETE FROM extracted_entities WHERE raw_id = ?", (raw_id,))
+        cursor.execute("DELETE FROM extracted_keywords WHERE raw_id = ?", (raw_id,))
             
         entities = extract_entities_from_text(text)
         for e in entities:

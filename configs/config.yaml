@@ -3,6 +3,284 @@ telegram:
   enabled: true
   session_path: C:/autoai/telegram_pipe/data/telethon.session
   channels:
-  - '@maddingStock'
-  - '@quantum_ALGO'
-  - '@HANAchina'
+    # ── 기존 채널 ─────────────────────────────────────
+    - name: '@quantum_ALGO'
+      label: '퀀텀 알고리즘'
+      tags: [US_STOCK, AI, QUANT]
+      sector: ai_tech
+
+    - name: '@HANAchina'
+      label: '하나 중국/신흥국 전략 김경환'
+      tags: [CHINA, MACRO, GLOBAL]
+      sector: mixed
+
+    - name: 'https://t.me/+zwj4vFTjFOEyYzJl'
+      label: '승도리'
+      tags: [MACRO]
+      sector: energy
+
+    # ── 원자재 / 매크로 ────────────────────────────────
+    - name: '@akacommodity'
+      label: '대신증권 원자재 최진영'
+      tags: [COMMODITY, MACRO]
+      sector: energy
+
+    - name: '@mistergray_11'
+      label: '회색인간의 매크로 + 투자'
+      tags: [MACRO]
+      sector: mixed
+
+    - name: '@cahier_de_market'
+      label: '카이에 de market'
+      tags: [MACRO]
+      sector: mixed
+
+    - name: '@decoded_narratives'
+      label: 'Decoded Narratives'
+      tags: [MACRO, GLOBAL]
+      sector: mixed
+
+    # ── 방산 / 우주 ────────────────────────────────────
+    - name: '@defence_24'
+      label: '우주방산AI로봇 아카이브'
+      tags: [DEFENSE, KR_STOCK]
+      sector: defense
+
+    - name: '@HI_GS'
+      label: 'DAOL 조선/기계/방산 최광식'
+      tags: [DEFENSE, KR_STOCK]
+      sector: defense
+
+    - name: '@hanhwasmall'
+      label: '한화 기계/우주/방산/조선 배성조'
+      tags: [DEFENSE, KR_STOCK]
+      sector: defense
+
+    # ── 중국 / 해외 ────────────────────────────────────
+    - name: '@chinastockrestaurant8'
+      label: '중국주식반점'
+      tags: [CHINA, GLOBAL]
+      sector: china
+
+    - name: '@jkc123'
+      label: '[삼성 전종규] 차이나는 투자전략'
+      tags: [CHINA, MACRO]
+      sector: china
+
+    - name: '@NittanyLionLand'
+      label: 'Nittany ATOM Land'
+      tags: [GLOBAL, US_STOCK]
+      sector: mixed
+
+    - name: '@aetherjapanresearch'
+      label: '에테르의 일본&미국 리서치'
+      tags: [JAPAN, US_STOCK]
+      sector: global
+
+    - name: '@Barbarianglobal'
+      label: 'The Barbarian 해외주식'
+      tags: [GLOBAL]
+      sector: global
+
+    - name: '@yeonsour'
+      label: '연수르 해외주식'
+      tags: [GLOBAL, US_STOCK]
+      sector: mixed
+
+    - name: '@moneypub1'
+      label: '오키호테 미국 주식'
+      tags: [US_STOCK]
+      sector: global
+
+    - name: '@hanaglobalbottomup'
+      label: '[하나증권 해외주식분석]'
+      tags: [GLOBAL, US_STOCK]
+      sector: global
+
+    - name: '@globaletfi'
+      label: '[하나 Global ETF] 박승진'
+      tags: [GLOBAL, ETF]
+      sector: global
+
+    - name: '@TNBfolio_US'
+      label: 'US Earnings by TNBfolio'
+      tags: [US_STOCK]
+      sector: mixed
+
+    # ── 증권사 리서치 ──────────────────────────────────
+    - name: '@HanaResearch'
+      label: '하나증권 리서치'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@shinhanresearch'
+      label: '신한 리서치'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@meritz_research'
+      label: '메리츠증권 리서치'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@KiwoomResearch'
+      label: '키움증권 리서치센터'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@daolresearch'
+      label: '다올투자증권 리서치센터'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@hmsecresearch'
+      label: '현대차증권 리서치센터'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@sksresearch'
+      label: 'SK증권 Research'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@lovequant'
+      label: '흥국증권 리서치센터'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@dh_finance'
+      label: '한화 Research 금융 김도하'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@hanwhastrategy'
+      label: '한화투자증권 투자전략팀'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    - name: '@Samsung_Global_AI_SW'
+      label: '[삼성 이영진] 글로벌 AI/SW'
+      tags: [US_STOCK, AI, RESEARCH]
+      sector: ai_tech
+
+    - name: '@ym_research'
+      label: 'YM리서치'
+      tags: [KR_STOCK, RESEARCH]
+      sector: mixed
+
+    # ── 독립 리서치 / 개인 ─────────────────────────────
+    - name: '@growthresearch'
+      label: '그로쓰리서치 [독립리서치]'
+      tags: [KR_STOCK, GROWTH]
+      sector: mixed
+
+    - name: '@d_ticker'
+      label: '딘스티커 Dean Ticker'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@umbrellaresearch'
+      label: '엄브렐라 리서치'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@triple_stock'
+      label: '트리플 아이'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@valuefinder'
+      label: '독립리서치 밸류파인더'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@econostudy'
+      label: '와이즈리서치 경제공부방'
+      tags: [MACRO, KR_STOCK]
+      sector: mixed
+
+    - name: '@YoungTiger_stock'
+      label: '영리한타이거의 주식공부방'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@allbareun'
+      label: '올바른'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@WoosanXNNN'
+      label: '우산 X NNN의 아이디어'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@Ten_level'
+      label: '텐렙'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@tambangwang'
+      label: '탐방왕'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@bumgore'
+      label: '시장 이야기 by 제이슨'
+      tags: [MACRO, KR_STOCK]
+      sector: mixed
+
+    - name: '@TNBfolio'
+      label: 'TNBfolio'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@Joorini34'
+      label: 'Granit34의 투자스토리'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@Yeouido_Lab'
+      label: 'Yeouido Lab 여의도 톺아보기'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@kkkontemp'
+      label: 'KK Kontemporaries'
+      tags: [KR_STOCK, GLOBAL]
+      sector: mixed
+
+    - name: '@hermitcrab41'
+      label: '기술적 분석으로 보는 주식시장'
+      tags: [KR_STOCK, TECHNICAL]
+      sector: mixed
+
+    - name: '@beindependent01'
+      label: 'BI Be Independent'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@Brain_And_Body_Research'
+      label: 'Brain and Body Research'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    - name: '@stockinvcowcow'
+      label: '영리한 동물원'
+      tags: [KR_STOCK]
+      sector: mixed
+
+    # ── 섹터 특화 ──────────────────────────────────────
+    - name: '@yakjangsu'
+      label: '미국 제약-바이오 주식 약장수'
+      tags: [BIO, US_STOCK]
+      sector: bio
+
+    - name: '@pikachu_aje'
+      label: '피카츄 아저씨'
+      tags: [KR_STOCK]
+      sector: energy
+
+    - name: '@foreconomy'
+      label: '알파카 주식 목장'
+      tags: [KR_STOCK]
+      sector: mixed

@@ -37,11 +37,13 @@ def ingest_message(channel_id: int, message_id: int, message_date: datetime, raw
     
     try:
         cursor.execute("""
-            INSERT INTO raw_messages 
+            INSERT OR IGNORE INTO raw_messages
             (channel_id, message_id, message_date, raw_text, raw_json, content_hash, duplicate_of)
             VALUES (?, ?, ?, ?, ?, ?, ?)
         """, (channel_id, message_id, message_date, raw_text, raw_json_str, content_hash, duplicate_of))
         conn.commit()
+        if cursor.rowcount == 0:
+            return False
         print(f"Ingested msg {channel_id}:{message_id}")
         return True
     except Exception as e:
@@ -116,6 +118,50 @@ def _extract_url(msg: Any) -> Optional[str]:
     url = getattr(webpage, "url", None)
     return url if isinstance(url, str) else None
 
+def _parse_invite_hash(ref: str) -> Optional[str]:
+    """Extract invite hash from https://t.me/+HASH or t.me/joinchat/HASH links."""
+    import re
+    m = re.search(r't\.me/\+([A-Za-z0-9_-]+)', ref)
+    if m:
+        return m.group(1)
+    m = re.search(r't\.me/joinchat/([A-Za-z0-9_-]+)', ref)
+    if m:
+        return m.group(1)
+    if ref.startswith('+') and len(ref) > 1:
+        return ref[1:]
+    return None
+
+async def _resolve_channel(client, ref: str):
+    """Resolve a channel ref — handles @username, invite links, and numeric IDs."""
+    from telethon.tl.functions.messages import ImportChatInviteRequest, CheckChatInviteRequest
+    from telethon.errors import UserAlreadyParticipantError, InviteHashExpiredError
+
+    invite_hash = _parse_invite_hash(ref)
+    if invite_hash:
+        # Try get_entity directly first (already joined)
+        try:
+            return await client.get_entity(ref)
+        except Exception:
+            pass
+        # Not joined yet — check invite and join
+        try:
+            await client(CheckChatInviteRequest(hash=invite_hash))
+            result = await client(ImportChatInviteRequest(hash=invite_hash))
+            print(f"Joined private channel via invite: {ref}")
+            return result.chats[0]
+        except UserAlreadyParticipantError:
+            # Already joined but get_entity failed — iterate dialogs to find it
+            async for dialog in client.iter_dialogs():
+                ent = dialog.entity
+                invite = getattr(ent, 'invite_link', None) or ''
+                if invite_hash in invite:
+                    return ent
+            raise RuntimeError(f"Already joined but could not locate channel: {ref}")
+        except InviteHashExpiredError:
+            raise RuntimeError(f"Invite link expired: {ref}")
+    # Public @username or numeric ID
+    return await client.get_entity(ref)
+
 async def _ingest_telethon(channels: List[str], session_path: str, since: Optional[datetime], until: Optional[datetime], progress_every: int = 200) -> Tuple[int, int]:
     try:
         from telethon import TelegramClient
@@ -135,7 +181,7 @@ async def _ingest_telethon(channels: List[str], session_path: str, since: Option
     async with client:
         for ref in channels:
             try:
-                entity = await client.get_entity(ref)
+                entity = await _resolve_channel(client, ref)
             except Exception as e:
                 print(f"Channel resolve failed: {ref} - {e}")
                 continue
@@ -197,7 +243,12 @@ def run_ingest(config_path: str, since: Optional[datetime], until: Optional[date
     tg = (cfg.get("telegram") or {})
     enabled = bool(tg.get("enabled"))
     session_path = tg.get("session_path") or "data/telethon.session"
-    channels = tg.get("channels") or []
+    raw_channels = tg.get("channels") or []
+    # Support both plain strings ('@channel') and dicts ({name, label, tags})
+    channels = [
+        ch["name"] if isinstance(ch, dict) else ch
+        for ch in raw_channels
+    ]
     progress_every = int(tg.get("progress_every", 200))
     print(f"DB: {DB_PATH}")
     print(f"telegram.enabled: {enabled}")

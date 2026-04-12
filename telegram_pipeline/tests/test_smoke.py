@@ -6,6 +6,7 @@ from app.db import init_db, get_connection
 from app.ingest import ingest_message
 from app.process import process_messages
 from app.extract import run_extract
+from app.refine import import_refined_json
 
 # Set env for testing
 os.environ["ALLOW_WRITE"] = "1"
@@ -40,6 +41,42 @@ def test_pipeline_smoke():
     
     # 4. Extract
     run_extract()
+
+    sample = [
+        {
+            "message_id": "1001:1",
+            "relevance_score": 0.9,
+            "sentiment": "bullish",
+            "event_type": "earnings",
+            "summary": "삼성전자 실적과 AI 관련 수요가 언급됩니다. HBM 수요 확대가 긍정적으로 요약됩니다.",
+            "tickers": ["005930"],
+            "entities": ["Samsung Electronics"],
+            "bull_points": ["HBM 수요 증가"],
+            "bear_points": ["단기 변동성"],
+            "noise_flags": [],
+            "confidence": 0.8,
+        },
+        {
+            "message_id": "1001:2",
+            "relevance_score": 0.2,
+            "sentiment": "mixed",
+            "event_type": "other",
+            "summary": "애플과 테슬라가 언급되지만 맥락이 모호합니다. 투자 시그널로 보기 어려운 문장입니다.",
+            "tickers": [],
+            "entities": ["Apple", "Tesla"],
+            "bull_points": [],
+            "bear_points": ["중의성"],
+            "noise_flags": ["ambiguous"],
+            "confidence": 0.5,
+        },
+    ]
+    p = os.path.join(os.getcwd(), "data", "tmp_refine.json")
+    with open(p, "w", encoding="utf-8") as f:
+        import json
+        json.dump(sample, f, ensure_ascii=False)
+
+    res = import_refined_json(p)
+    assert res["inserted"] == 2
     
     # 5. Verification
     conn = get_connection()

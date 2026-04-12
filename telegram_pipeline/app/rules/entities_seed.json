@@ -3,24 +3,72 @@
         "entity_name": "Samsung Electronics",
         "entity_type": "STOCK_KR",
         "primary_ticker": "005930",
+        "sector": "반도체/전자",
+        "related_companies": ["SK하이닉스", "NVIDIA", "TSMC", "Micron", "Intel"],
         "aliases": ["삼성전자", "삼전", "Samsung Elec"]
     },
     {
         "entity_name": "SK Hynix",
         "entity_type": "STOCK_KR",
         "primary_ticker": "000660",
+        "sector": "반도체",
+        "related_companies": ["삼성전자", "Micron", "NVIDIA", "TSMC"],
         "aliases": ["SK하이닉스", "하이닉스", "Hynix"]
     },
     {
         "entity_name": "Tesla",
         "entity_type": "STOCK_US",
         "primary_ticker": "TSLA",
+        "sector": "전기차/에너지",
+        "related_companies": ["BYD", "Rivian", "Lucid", "CATL", "Panasonic"],
         "aliases": ["테슬라", "Tesla Motors"]
     },
     {
         "entity_name": "Apple",
         "entity_type": "STOCK_US",
         "primary_ticker": "AAPL",
+        "sector": "소비자가전/플랫폼",
+        "related_companies": ["Qualcomm", "Samsung Electronics", "TSMC", "Broadcom"],
         "aliases": ["애플", "아이폰"]
+    },
+    {
+        "entity_name": "NVIDIA",
+        "entity_type": "STOCK_US",
+        "primary_ticker": "NVDA",
+        "sector": "반도체/AI",
+        "related_companies": ["AMD", "삼성전자", "SK하이닉스", "TSMC", "Micron"],
+        "aliases": ["엔비디아", "Nvidia", "NVDA", "NVIDIA"]
+    },
+    {
+        "entity_name": "Microsoft",
+        "entity_type": "STOCK_US",
+        "primary_ticker": "MSFT",
+        "sector": "소프트웨어/클라우드",
+        "related_companies": ["Google", "Amazon", "Salesforce", "Oracle"],
+        "aliases": ["마이크로소프트", "MS", "Microsoft", "MSFT"]
+    },
+    {
+        "entity_name": "Salesforce",
+        "entity_type": "STOCK_US",
+        "primary_ticker": "CRM",
+        "sector": "소프트웨어/SaaS",
+        "related_companies": ["Microsoft", "ServiceNow", "Workday", "HubSpot"],
+        "aliases": ["세일즈포스", "Salesforce", "CRM"]
+    },
+    {
+        "entity_name": "ASUS",
+        "entity_type": "STOCK_TW",
+        "primary_ticker": "ASUS",
+        "sector": "하드웨어/PC",
+        "related_companies": ["MSI", "Gigabyte", "NVIDIA", "AMD"],
+        "aliases": ["에이수스", "華碩", "ASUS"]
+    },
+    {
+        "entity_name": "CITIC Securities",
+        "entity_type": "STOCK_CN",
+        "primary_ticker": "CITIC",
+        "sector": "금융/증권",
+        "related_companies": ["Goldman Sachs", "Morgan Stanley", "CICC"],
+        "aliases": ["中信证券", "CITIC", "중신증권"]
     }
 ]

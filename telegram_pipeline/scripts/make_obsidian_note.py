@@ -48,7 +48,7 @@ def _normalize_tg_url(url: str) -> str:
     return url
 
 def _extract_section(lines, header: str):
-    # header: "## Top Entities" 같은 라인 그대로
+    # header: "## Key Companies" 같은 라인 그대로
     start = None
     for i, ln in enumerate(lines):
         if ln.strip() == header:
@@ -65,9 +65,9 @@ def _extract_section(lines, header: str):
         out.append(ln)
     return out
 
-def _parse_top_entities(report_text: str):
+def _parse_key_companies(report_text: str):
     """
-    report의 '## Top Entities' 섹션을 파싱해서:
+    report의 '## Key Companies' 섹션을 파싱해서:
     [
       {
         "entity": "클래시스 (214150)",
@@ -81,7 +81,10 @@ def _parse_top_entities(report_text: str):
     ]
     """
     lines = report_text.splitlines()
-    sec = _extract_section(lines, "## Top Entities")
+    sec = _extract_section(lines, "## Key Companies")
+    if not sec:
+        # Backward compatibility for older reports.
+        sec = _extract_section(lines, "## Top Entities")
 
     entity_re = re.compile(r"^\-\s\*\*(.+?)\*\*:\s*(\d+)\s*$")
     ev_re = re.compile(r"^\s*\-\s*\[(\d{4}\-\d{2}\-\d{2})\s+(\d{2}:\d{2})\s+KST\]\s*(.+?)\s*$")
@@ -169,14 +172,14 @@ def main():
     day = _infer_day_from_report_path(report_path)
     report_text = _read_text(report_path)
 
-    entities = _parse_top_entities(report_text)
+    entities = _parse_key_companies(report_text)
 
     out_path = _default_out_path(report_path, day)
 
     lines = []
     lines.append(f"# Telegram Daily Links: {day}")
     lines.append("")
-    lines.append("## Top Entities (evidence links)")
+    lines.append("## Key Companies (evidence links)")
     lines.append("")
 
     if not entities:
