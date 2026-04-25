@@ -16,7 +16,7 @@ MODEL = "claude-sonnet-4-6"
 
 SYNTH_MODEL = "gpt-4o-mini"
 SYNTH_TEMPERATURE = 0.3
-SYNTH_MAX_TOKENS = 800
+SYNTH_MAX_TOKENS = 1000
 SYNTH_BATCH_SIZE = 10
 SYNTH_CONCURRENCY = 5
 
@@ -65,7 +65,12 @@ SYNTH_USER_TEMPLATE = """다음은 하나의 뉴스 기사에 대한 3개 프레
     "theme_score": 숫자,
     "bookie_score": 숫자 또는 null,
     "dominant_frame": "momentum|theme|bookie"
-  }}
+  }},
+
+  "sponsor_name": "가장 빈번한 sponsor.name 또는 null",
+  "value_chain_layer": "가장 빈번한 value_chain_layer 또는 null",
+  "bottleneck_score": "bottleneck_score 평균(null 제외) 또는 null",
+  "bottleneck_reason": "bottleneck_score 최고인 기사의 reason 또는 null"
 }}
 
 판단 기준:
@@ -100,6 +105,14 @@ async def _call_synth(client: AsyncOpenAI, sem: asyncio.Semaphore, item: dict) -
     frames_json = json.dumps(item["frames"], ensure_ascii=False, indent=2)
     raw_text = item.get("raw_text", "")
 
+    extra_fields = {
+        "sponsor": item.get("sponsor"),
+        "value_chain_layer": item.get("value_chain_layer"),
+        "bottleneck_score": item.get("bottleneck_score"),
+        "bottleneck_reason": item.get("bottleneck_reason"),
+    }
+    extra_json = json.dumps(extra_fields, ensure_ascii=False, indent=2)
+
     user_msg = (
         SYNTH_USER_TEMPLATE
         .replace("{frame_scores}", frames_json)
@@ -107,6 +120,7 @@ async def _call_synth(client: AsyncOpenAI, sem: asyncio.Semaphore, item: dict) -
         .replace("{message_id}", str(mid))
         .replace("{date}", item.get("date", "")[:10])
         .replace("{group}", item.get("group", ""))
+        + f"\n\n[의교창 필드]\n{extra_json}"
     )
 
     async with sem:
@@ -157,6 +171,38 @@ async def _run_synth(items: list[dict]) -> list[dict]:
     return results
 
 
+def _aggregate_new_fields(frame_scores: list[dict]) -> dict:
+    """Aggregate sponsor/value_chain_layer/bottleneck from frame_scores."""
+    from collections import Counter
+
+    sponsor_names: list[str] = []
+    layers: list[str] = []
+    bn_scores: list[float] = []
+    best_bn_score = -1.0
+    best_bn_reason = None
+
+    for fs in frame_scores:
+        sp = fs.get("sponsor")
+        if isinstance(sp, dict) and sp.get("name"):
+            sponsor_names.append(sp["name"])
+        layer = fs.get("value_chain_layer")
+        if layer:
+            layers.append(layer)
+        bs = fs.get("bottleneck_score")
+        if bs is not None and isinstance(bs, (int, float)):
+            bn_scores.append(float(bs))
+            if bs > best_bn_score:
+                best_bn_score = bs
+                best_bn_reason = fs.get("bottleneck_reason")
+
+    return {
+        "sponsor_name": Counter(sponsor_names).most_common(1)[0][0] if sponsor_names else None,
+        "value_chain_layer": Counter(layers).most_common(1)[0][0] if layers else None,
+        "bottleneck_score": round(sum(bn_scores) / len(bn_scores), 1) if bn_scores else None,
+        "bottleneck_reason": best_bn_reason,
+    }
+
+
 def synthesize_frames(frame_scores: list[dict], day: str) -> list[dict]:
     """Synthesize 3-frame scores into IC gate decisions via Howard Marks persona."""
     if not frame_scores:
@@ -166,6 +212,14 @@ def synthesize_frames(frame_scores: list[dict], day: str) -> list[dict]:
     print(f"Model: {SYNTH_MODEL} | temperature={SYNTH_TEMPERATURE} | concurrency={SYNTH_CONCURRENCY}")
 
     results = asyncio.run(_run_synth(frame_scores))
+
+    agg = _aggregate_new_fields(frame_scores)
+    for r in results:
+        r.setdefault("sponsor_name", agg["sponsor_name"])
+        r.setdefault("value_chain_layer", agg["value_chain_layer"])
+        r.setdefault("bottleneck_score", agg["bottleneck_score"])
+        r.setdefault("bottleneck_reason", agg["bottleneck_reason"])
+
     print(f"\nDone: {len(results)}/{len(frame_scores)} succeeded")
     return results
 

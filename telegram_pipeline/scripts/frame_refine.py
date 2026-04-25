@@ -73,7 +73,7 @@ def _run_async(coro):
 
 MODEL = "gpt-4o-mini"
 TEMPERATURE = 0.2
-MAX_TOKENS = 900
+MAX_TOKENS = 1200
 BATCH_SIZE = 10   # articles per batch
 CONCURRENCY = 5   # parallel API calls within a batch
 DEFAULT_DB = str(DB_PATH)
@@ -113,6 +113,15 @@ USER_TEMPLATE = """다음 텔레그램 뉴스 기사를 3개 프레임으로 동
     "key_point": "테마 관점 핵심 1줄"
   }},
 
+  "sponsor": {{
+    "name": "정부/공공|빅테크|에너지메이저|기타 또는 null",
+    "amount": "집행 규모 표현 또는 null",
+    "direction": "스폰서 방향 1줄 또는 null"
+  }},
+  "value_chain_layer": "원재료|부품|장비|완제품|서비스|인프라 또는 null",
+  "bottleneck_score": 0~10 또는 null,
+  "bottleneck_reason": "병목 근거 1줄 또는 null",
+
   "bookie": {{
     "score": 0~10 또는 null,
     "event_name": "이벤트명 또는 null",
@@ -133,7 +142,27 @@ USER_TEMPLATE = """다음 텔레그램 뉴스 기사를 3개 프레임으로 동
 - 단신/속보 기사: momentum/bookie 위주
 - 분석 리포트: theme 위주
 - 지정학 뉴스: bookie 위주
-- 확정된 사실만 있으면 bookie.score = null"""
+- 확정된 사실만 있으면 bookie.score = null
+
+sponsor 추출 기준:
+- 정부/공공기관 예산·정책 집행 → "정부/공공"
+- 빅테크 CAPEX(AI/클라우드/데이터센터) → "빅테크"
+- 에너지 대기업 투자 → "에너지메이저"
+- 명확하지 않으면 null
+
+value_chain_layer 기준:
+- 원재료: 광물, 화학원료, 웨이퍼
+- 부품: 반도체, 배터리셀, 모듈
+- 장비: 제조장비, 검사장비
+- 완제품: 완성차, 서버, 가전
+- 서비스: 클라우드, AI API
+- 인프라: 전력망, 데이터센터, 파이프라인
+
+bottleneck_score 기준:
+10 = 공급 절대 부족, 대체불가
+5  = 공급 제한적, 일부 대체 가능
+0  = 공급 충분 또는 판단 불가
+null = 정보 부족"""
 
 # ---------------------------------------------------------------------------
 # DB
@@ -247,6 +276,10 @@ async def call_llm(client: AsyncOpenAI, sem: asyncio.Semaphore, article: dict) -
                     "theme": data["theme"],
                     "bookie": data["bookie"],
                 },
+                "sponsor": data.get("sponsor"),
+                "value_chain_layer": data.get("value_chain_layer"),
+                "bottleneck_score": data.get("bottleneck_score"),
+                "bottleneck_reason": data.get("bottleneck_reason"),
             }
         except asyncio.CancelledError:
             # 3.14에서는 CancelledError를 반드시 재전파해야 정상 취소됨
