@@ -162,7 +162,40 @@ bottleneck_score 기준:
 10 = 공급 절대 부족, 대체불가
 5  = 공급 제한적, 일부 대체 가능
 0  = 공급 충분 또는 판단 불가
-null = 정보 부족"""
+null = 정보 부족
+
+[예시 1 — OCI홀딩스: 정부 스폰서 + 원재료 병목]
+기사: "미국 UFLPA 강화로 비중국산 폴리실리콘 수요 급증. OCI홀딩스 말레이시아 공장 풀가동 중."
+정답:
+  sponsor: {{"name": "정부/공공", "direction": "미국 탈중국 공급망 정책"}}
+  value_chain_layer: "원재료"
+  bottleneck_score: 9
+  bottleneck_reason: "비중국산 폴리실리콘 대체 공급처 OCI·Wacker 뿐"
+
+[예시 2 — HD현대마린솔루션: 빅테크 스폰서 + 인프라 병목]
+기사: "MS·구글 해저케이블 투자 확대. 해양 유지보수 수요 급증. HD현대마린솔루션 수주잔고 사상 최대."
+정답:
+  sponsor: {{"name": "빅테크", "direction": "글로벌 AI 인프라 확장 CAPEX"}}
+  value_chain_layer: "인프라"
+  bottleneck_score: 8
+  bottleneck_reason: "해저케이블 유지보수 전문 업체 글로벌 희소"
+
+[예시 3 — 피노·엘앤에프: 정부 스폰서 + 부품 병목]
+기사: "IRA 보조금으로 미국 배터리 공장 가동률 상승. 양극재 국내 공급 부족 심화."
+정답:
+  sponsor: {{"name": "정부/공공", "direction": "미국 IRA 배터리 공급망 내재화"}}
+  value_chain_layer: "부품"
+  bottleneck_score: 8
+  bottleneck_reason: "미국 현지 인증 양극재 공급사 극소수"
+
+[예시 4 — 병목 이동 패턴: 빅테크 스폰서 + 인프라 병목]
+기사: "AI 데이터센터 전력 부족 심화. 발전기·UPS 공급망 6개월 대기. 냉각 시스템도 병목 전환."
+정답:
+  sponsor: {{"name": "빅테크", "direction": "AI 데이터센터 확장"}}
+  value_chain_layer: "인프라"
+  bottleneck_score: 9
+  bottleneck_reason: "병목이 GPU→전력→유지보수로 순차 이동 중"
+"""
 
 # ---------------------------------------------------------------------------
 # DB
