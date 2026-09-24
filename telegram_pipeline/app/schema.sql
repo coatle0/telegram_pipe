@@ -15,6 +15,14 @@ CREATE TABLE IF NOT EXISTS raw_messages (
 CREATE INDEX IF NOT EXISTS idx_raw_content_hash ON raw_messages(content_hash);
 CREATE UNIQUE INDEX IF NOT EXISTS idx_raw_msg_unique ON raw_messages(channel_id, message_id);
 
+-- Persistent per-channel ingest checkpoint (2026-09-25, TGXS P1 follow-up)
+CREATE TABLE IF NOT EXISTS ingest_checkpoints (
+    channel_id INTEGER PRIMARY KEY,
+    last_message_id INTEGER NOT NULL,
+    last_message_date DATETIME,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Immutable Triggers
 CREATE TRIGGER IF NOT EXISTS prevent_raw_update
 BEFORE UPDATE ON raw_messages

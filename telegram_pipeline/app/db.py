@@ -39,6 +39,30 @@ def get_connection(db_path: str = str(DB_PATH), write: Optional[bool] = None) ->
     conn.execute("PRAGMA foreign_keys = ON")
     return conn
 
+def get_checkpoint(conn: sqlite3.Connection, channel_id: int) -> Optional[int]:
+    """Return the last persisted message_id for this channel, or None if never checkpointed."""
+    row = conn.execute(
+        "SELECT last_message_id FROM ingest_checkpoints WHERE channel_id = ?",
+        (channel_id,),
+    ).fetchone()
+    return row["last_message_id"] if row else None
+
+def set_checkpoint(conn: sqlite3.Connection, channel_id: int, message_id: int, message_date: str) -> None:
+    """Upsert the checkpoint for a channel. Only advances forward (never regresses)."""
+    conn.execute(
+        """
+        INSERT INTO ingest_checkpoints (channel_id, last_message_id, last_message_date, updated_at)
+        VALUES (?, ?, ?, CURRENT_TIMESTAMP)
+        ON CONFLICT(channel_id) DO UPDATE SET
+            last_message_id = excluded.last_message_id,
+            last_message_date = excluded.last_message_date,
+            updated_at = CURRENT_TIMESTAMP
+        WHERE excluded.last_message_id > ingest_checkpoints.last_message_id
+        """,
+        (channel_id, message_id, message_date),
+    )
+    conn.commit()
+
 def init_db(conn: Optional[sqlite3.Connection] = None):
     """Initialize DB with schema."""
     # If conn provided, use it. If not, get one with write=True

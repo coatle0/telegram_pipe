@@ -7,7 +7,7 @@ from datetime import datetime, timezone, date
 from pathlib import Path
 from typing import Optional, List, Tuple, Any
 import yaml
-from app.db import get_connection, check_write_permission, DB_PATH
+from app.db import get_connection, check_write_permission, DB_PATH, get_checkpoint, set_checkpoint
 from app.config import get_telegram_credentials
 
 def compute_hash(raw_text: str, channel_id: int, message_id: int) -> str:
@@ -164,7 +164,7 @@ async def _resolve_channel(client, ref: str):
 
 async def _ingest_telethon(channels: List[str], session_path: str, since: Optional[datetime], until: Optional[datetime], progress_every: int = 200) -> Tuple[int, int]:
     try:
-        from telethon import TelegramClient
+        from telethon import TelegramClient, utils as tl_utils
     except Exception as e:
         raise RuntimeError(f"Telethon not available: {e}")
     api_id, api_hash = get_telegram_credentials()
@@ -178,6 +178,10 @@ async def _ingest_telethon(channels: List[str], session_path: str, since: Option
         since_utc = since.replace(tzinfo=timezone.utc) if since.tzinfo is None else since.astimezone(timezone.utc)
     if until:
         until_utc = until.replace(tzinfo=timezone.utc) if until.tzinfo is None else until.astimezone(timezone.utc)
+    # Persistent cursor only applies when the caller gave no explicit date window
+    # (--day/--since/--until). Explicit ranges always mean "exactly this window",
+    # cursor or not.
+    use_checkpoint = since_utc is None and until_utc is None
     async with client:
         for ref in channels:
             try:
@@ -185,8 +189,19 @@ async def _ingest_telethon(channels: List[str], session_path: str, since: Option
             except Exception as e:
                 print(f"Channel resolve failed: {ref} - {e}")
                 continue
+            peer_id = tl_utils.get_peer_id(entity)
+            checkpoint_id: Optional[int] = None
+            if use_checkpoint:
+                conn = get_connection()
+                try:
+                    checkpoint_id = get_checkpoint(conn, peer_id)
+                finally:
+                    conn.close()
+            max_id_seen = checkpoint_id or 0
+            min_id = checkpoint_id or 0
+            latest_date_str: Optional[str] = None
             # Start near upper bound; newest first
-            async for msg in client.iter_messages(entity, offset_date=until_utc, reverse=False):
+            async for msg in client.iter_messages(entity, offset_date=until_utc, min_id=min_id, reverse=False):
                 d = msg.date  # Telethon returns UTC naive or aware; normalize next
                 if d is None:
                     continue
@@ -195,6 +210,9 @@ async def _ingest_telethon(channels: List[str], session_path: str, since: Option
                     d_utc = d.replace(tzinfo=timezone.utc)
                 else:
                     d_utc = d.astimezone(timezone.utc)
+                if use_checkpoint and msg.id > max_id_seen:
+                    max_id_seen = msg.id
+                    latest_date_str = d_utc.strftime("%Y-%m-%d %H:%M:%S")
                 # 2) Enforce strict window (until exclusive)
                 if until_utc and d_utc >= until_utc:
                     continue
@@ -236,6 +254,12 @@ async def _ingest_telethon(channels: List[str], session_path: str, since: Option
                 ok = ingest_message(int(chat_id), int(msg.id), msg_dt_str, text, raw_json)
                 if ok:
                     inserted_total += 1
+            if use_checkpoint and max_id_seen > (checkpoint_id or 0):
+                conn = get_connection()
+                try:
+                    set_checkpoint(conn, peer_id, max_id_seen, latest_date_str)
+                finally:
+                    conn.close()
     return fetched_total, inserted_total
 
 def run_ingest(config_path: str, since: Optional[datetime], until: Optional[datetime]):
@@ -260,7 +284,10 @@ def run_ingest(config_path: str, since: Optional[datetime], until: Optional[date
         try:
             fetched, inserted = asyncio.run(_ingest_telethon(channels, session_path, since, until, progress_every=progress_every))
             print(f"Fetched: {fetched}, Inserted: {inserted}")
-            if fetched == 0:
+            # In persistent-cursor mode (no explicit --day/--since/--until), 0 fetched is
+            # the normal/expected outcome once a channel is caught up — not an error.
+            # Only explicit date-range runs treat 0 fetched as a misconfiguration signal.
+            if fetched == 0 and (since is not None or until is not None):
                 raise RuntimeError("0 fetched. Check channels, date range, or credentials.")
         except RuntimeError:
             raise
