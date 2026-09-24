@@ -1,7 +1,7 @@
 telegram:
   progress_every: 20
   enabled: true
-  session_path: C:/autoai/telegram_pipe/data/telethon.session
+  session_path: C:/vsurf_capital/projects/telegram_pipe/data/telethon.session
   channels:
     # ── 기존 채널 ─────────────────────────────────────
     - name: '@quantum_ALGO'
