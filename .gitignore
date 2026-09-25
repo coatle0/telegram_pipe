@@ -23,6 +23,11 @@ data/frame_scores_*.json
 data/ic_gate_*.json
 data/test_llm_*.json
 data/tmp_refine.json
+telegram_pipeline/data/trae_refined_*.json
+telegram_pipeline/data/frame_scores_*.json
+telegram_pipeline/data/ic_gate_*.json
+telegram_pipeline/data/test_llm_*.json
+telegram_pipeline/data/tmp_refine.json
 tags/
 
 # OS
