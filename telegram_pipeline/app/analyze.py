@@ -8,7 +8,13 @@ from pathlib import Path
 from openai import AsyncOpenAI
 
 REPORT_DIR = Path("C:/DCOS/10_Pillars/20_AutoAI/telepipe")
-MODEL = "claude-sonnet-4-6"
+# 2026-09-27: analyze_report()를 Anthropic -> OpenAI로 전환(CIO 지시 "모두 openai 사용").
+# 전환 사유 2가지가 실측으로 확인됐다.
+#   (1) ANTHROPIC_API_KEY가 env·레지스트리 모두 미설정 -> 함수가 SystemExit로 즉시 중단
+#   (2) 기존 모델명 "claude-sonnet-4-6"은 실존 식별자와 맞지 않아 키를 넣어도 실패 가능
+# 이제 파이프라인의 LLM 4개 지점이 전부 OpenAI gpt-4o-mini를 사용한다
+# (generate_refine_json / frame_refine / synthesize_frames / analyze_report).
+MODEL = "gpt-4o-mini"
 
 # ---------------------------------------------------------------------------
 # synthesize_frames — Howard Marks IC gate
@@ -252,14 +258,17 @@ Unknown Candidates 또는 관련 기업 중 추가 검토 가치 있는 방향.
 
 
 def analyze_report(day: str):
-    try:
-        from anthropic import Anthropic
-    except ImportError:
-        raise SystemExit("anthropic 패키지가 필요합니다: pip install anthropic")
+    """일별 리포트에서 투자 코멘터리를 생성한다.
 
-    api_key = os.environ.get("ANTHROPIC_API_KEY")
+    OpenAI 경로를 사용한다(2026-09-27 전환). Anthropic system 파라미터는
+    OpenAI에 없으므로 SYSTEM_PROMPT를 role="system" 메시지로 옮겼고,
+    응답 추출도 message.content[0].text -> choices[0].message.content로 바뀐다.
+    """
+    from openai import OpenAI
+
+    api_key = os.environ.get("OPENAI_API_KEY")
     if not api_key:
-        raise SystemExit("ANTHROPIC_API_KEY 환경변수를 설정해주세요.")
+        raise SystemExit("OPENAI_API_KEY 환경변수를 설정해주세요.")
 
     report_path = REPORT_DIR / f"report_{day}.md"
     if not report_path.exists():
@@ -267,23 +276,24 @@ def analyze_report(day: str):
 
     report_content = report_path.read_text(encoding="utf-8-sig")
 
-    client = Anthropic(api_key=api_key)
-    message = client.messages.create(
+    client = OpenAI(api_key=api_key)
+    resp = client.chat.completions.create(
         model=MODEL,
         max_tokens=2048,
-        system=SYSTEM_PROMPT,
+        temperature=0.3,
         messages=[
+            {"role": "system", "content": SYSTEM_PROMPT},
             {
                 "role": "user",
                 "content": (
                     f"다음은 {day} 마켓 인텔리전스 리포트입니다. "
                     f"투자 코멘터리를 작성해주세요:\n\n{report_content}"
                 ),
-            }
+            },
         ],
     )
 
-    commentary = message.content[0].text
+    commentary = resp.choices[0].message.content
 
     output_path = REPORT_DIR / f"commentary_{day}.md"
     with open(output_path, "w", encoding="utf-8-sig") as f:

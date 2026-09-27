@@ -3,4 +3,7 @@ telethon>=1.36,<2.0
 PyYAML>=6.0,<7.0
 python-dateutil>=2.9,<3.0
 rich>=13,<14
-anthropic>=0.40,<1.0
+# 2026-09-27: LLM 경로를 전부 OpenAI로 통일(CIO 지시)하여 anthropic 제거.
+# openai는 generate_refine_json / frame_refine / analyze.py 3곳이 이미 쓰고 있었으나
+# requirements에 선언되지 않은 상태였다(기존 결함) — 함께 명시한다.
+openai>=1.40,<3.0
