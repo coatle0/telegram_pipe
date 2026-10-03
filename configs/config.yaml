@@ -346,11 +346,6 @@ telegram:
     - KR_STOCK
     - GROWTH
     sector: mixed
-  - name: '@Rowna999'
-    label: 로우나의 투자방
-    tags:
-    - KR_STOCK
-    sector: mixed
   - name: '@aicorporateanalysisdeepdive'
     label: AI 리서치 딥다이브_Seoul to Wall St.
     tags:
