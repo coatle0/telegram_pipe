@@ -351,11 +351,6 @@ telegram:
     tags:
     - KR_STOCK
     sector: mixed
-  - name: '@ai_masters_community'
-    label: AI MASTERS
-    tags:
-    - AI
-    sector: ai_tech
   - name: '@aicorporateanalysisdeepdive'
     label: AI 리서치 딥다이브_Seoul to Wall St.
     tags:
